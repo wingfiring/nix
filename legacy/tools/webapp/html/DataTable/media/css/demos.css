@@ -1,0 +1,311 @@
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * General page setup
+ */
+#kt_example {
+	font: 80%/1.45em "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #333;
+	background-color: #fff;
+}
+
+
+#kt_example #container {
+	width: 800px;
+	margin: 30px auto;
+	padding: 0;
+}
+
+
+#kt_example #footer {
+	margin: 50px auto 0 auto;
+	padding: 0;
+}
+
+#kt_example #demo {
+	margin: 30px auto 0 auto;
+}
+
+#kt_example .big {
+	font-size: 1.3em;
+	font-weight: bold;
+	line-height: 1.6em;
+	color: #4E6CA3;
+}
+
+#kt_example .spacer {
+	height: 20px;
+	clear: both;
+}
+
+#kt_example .clear {
+	clear: both;
+}
+
+#kt_example pre {
+	padding: 15px;
+	background-color: #F5F5F5;
+	border: 1px solid #CCCCCC;
+}
+
+#kt_example h1 {
+	margin-top: 2em;
+	font-size: 1.3em;
+	font-weight: normal;
+	line-height: 1.6em;
+	color: #4E6CA3;
+	border-bottom: 1px solid #B0BED9;
+	clear: both;
+}
+
+#kt_example h2 {
+	font-size: 1.2em;
+	font-weight: normal;
+	line-height: 1.6em;
+	color: #4E6CA3;
+	clear: both;
+}
+
+#kt_example a {
+	color: #0063DC;
+	text-decoration: none;
+}
+
+#kt_example a:hover {
+	text-decoration: underline;
+}
+
+#kt_example ul {
+	color: #B0BED9;
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables features
+ */
+
+.dataTables_wrapper {
+	position: relative;
+	min-height: 302px;
+	_height: 302px;
+	clear: both;
+}
+
+.dataTables_processing {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	width: 250px;
+	margin-left: -125px;
+	border: 1px solid #ddd;
+	text-align: center;
+	color: #999;
+	font-size: 11px;
+	padding: 2px 0;
+}
+
+.dataTables_length {
+	width: 40%;
+	float: left;
+}
+
+.dataTables_filter {
+	width: 50%;
+	float: right;
+	text-align: right;
+}
+
+.dataTables_info {
+	width: 60%;
+	float: left;
+}
+
+.dataTables_paginate {
+	width: 44px;
+	* width: 50px;
+	float: right;
+	text-align: right;
+}
+
+/* Pagination nested */
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
+	height: 19px;
+	width: 19px;
+	margin-left: 3px;
+	float: left;
+}
+
+.paginate_disabled_previous {
+	background-image: url('../images/back_disabled.jpg');
+}
+
+.paginate_enabled_previous {
+	background-image: url('../images/back_enabled.jpg');
+}
+
+.paginate_disabled_next {
+	background-image: url('../images/forward_disabled.jpg');
+}
+
+.paginate_enabled_next {
+	background-image: url('../images/forward_enabled.jpg');
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables display
+ */
+table.display {
+	margin: 0 auto;
+	width: 100%;
+	clear: both;
+}
+
+table.display thead th {
+	padding: 3px 10px;
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	cursor: pointer;
+	* cursor: hand;
+}
+
+table.display tfoot th {
+	padding: 3px 10px;
+	border-top: 1px solid black;
+	font-weight: bold;
+}
+
+table.display tr.heading2 td {
+	border-bottom: 1px solid #aaa;
+}
+
+table.display td {
+	padding: 3px 10px;
+}
+
+table.display td.center {
+	text-align: center;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+
+.sorting_asc {
+	background: url('../images/sort_asc.jpg') no-repeat center right;
+}
+
+.sorting_desc {
+	background: url('../images/sort_desc.jpg') no-repeat center right;
+}
+
+.sorting {
+	background: url('../images/sort_both.jpg') no-repeat center right;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Row striping
+ */
+table.display tr.odd_gradeA {
+	background-color: #ddffdd;
+}
+
+table.display tr.even_gradeA {
+	background-color: #eeffee;
+}
+
+table.display tr.odd_gradeC {
+	background-color: #ddddff;
+}
+
+table.display tr.even_gradeC {
+	background-color: #eeeeff;
+}
+
+table.display tr.odd_gradeX {
+	background-color: #ffdddd;
+}
+
+table.display tr.even_gradeX {
+	background-color: #ffeeee;
+}
+
+table.display tr.odd_gradeU {
+	background-color: #ddd;
+}
+
+table.display tr.even_gradeU {
+	background-color: #eee;
+}
+
+
+table.KeyTable td.focus {
+	border: 3px solid #3366FF;
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Cell borders
+ */
+/*
+ * Good old IE - not doing transparent borders
+ */
+table.display td {
+	border: 3px solid transparent;
+}
+
+tr.odd_gradeA td {
+	border: 3px solid #ddffdd;
+}
+
+tr.odd_gradeA td {
+	border: 3px solid #ddffdd;
+}
+
+tr.even_gradeA td {
+	border: 3px solid #eeffee;
+}
+
+tr.odd_gradeC td {
+	border: 3px solid #ddddff;
+}
+
+tr.even_gradeC td {
+	border: 3px solid #eeeeff;
+}
+
+tr.odd_gradeX td {
+	border: 3px solid #ffdddd;
+}
+
+tr.even_gradeX td {
+	border: 3px solid #ffeeee;
+}
+
+tr.odd_gradeU td {
+	border: 3px solid #ddd;
+}
+
+tr.even_gradeU td {
+	border: 3px solid #eee;
+}
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Misc
+ */
+div.box {
+	height: 100px;
+	padding: 10px;
+	overflow: auto;
+	border: 1px solid #8080FF;
+	background-color: #E5E5FF;
+}

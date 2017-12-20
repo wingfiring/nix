@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<META content=false http-equiv=imagetotrbar>
+                <LINK rel=stylesheet type=text/css href="c3.css">
+                <link rel="stylesheet" href="../JSTree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../DataTable/media/css/jquery.dataTables.css">
+		<link rel="stylesheet" type="text/css" href="../DataTable/examples/resources/syntax/shCore.css">
+		<!-- link rel="stylesheet" type="text/css" href="DataTable/examples/resources/demo.css" -->
+		<script src="../jquery-1.11.1.js"></script>
+		<script src="cm.js"></script>
+		<!--jstree plugin-->
+		<script src="../JSTree/jstree.min.js"></script>
+		<!--DataTable plugin-->
+		<script type="text/javascript" language="javascript" src="../DataTable/media/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" language="javascript" src="../DataTable/examples/resources/syntax/shCore.js"></script>
+		<script type="text/javascript" language="javascript" src="../DataTable/examples/resources/demo.js"></script>
+		<!--KeyTable.js, jeditable.js are plugins used for table edit-->
+		<script type="text/javascript" language="javascript" src="../DataTable/media/js/KeyTable.js"></script>
+		<script type="text/javascript" language="javascript" src="../DataTable/media/support/jquery.jeditable.js"></script>
+
+		<title>Content Server</title>
+	</head>
+	<body>
+	<div class="logo">Asset Browser</div>
+	<div class="wrapper">
+	<div id="submission_section">Repository - Submissions</div>
+		<div id="schema_list" class="left">
+            	  <ul>
+                  </ul>
+		</div>
+		<div class="right"> 
+			<div id="json_view">JSON view</div>
+		</div>
+	</div>
+	<div class="wrapper">
+	<div id="workspace_section">Workspace</div>
+		<div id="workspace_view" class="left">
+          	 <ul>
+          	 </ul>
+		</div>
+		<div class="right">
+			<div><button type="button" onclick="commit()">Commit to Repo</button>
+			    <input id="commit_input"></input>
+			</div>
+			<div><button type="button" onclick="save_workspace()">Save to Workspace</button>
+			<div id="workspace_json_view">JSON view</div>
+		<div id="text_area">
+			<form method="POST">
+		<div>
+			<a id="json_path" href="#"></a>
+			<textarea id="json_text_area" contenteditable="true" width="400" height="400" cols=100 rows=18>JSON format of DATA
+			</textarea>
+		</div>
+		</form>
+		</div>
+		</div>
+	</div>
+	<div class="footer"> Powered By Xirang 2014</div>
+	</body>
+</html>

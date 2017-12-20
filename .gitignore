@@ -1,0 +1,24 @@
+binary
+sandbox/lab
+build/local/*
+
+
+*.swp
+trunk/tags
+cscope.*
+tags
+=======
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.lai
+*.la
+build_dir
+Toolkit
+.DS_Store

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<META content=false http-equiv=imagetotrbar>
+                <LINK rel=stylesheet type=text/css href="c3.css">
+                <link rel="stylesheet" href="JSTree/themes/default/style.min.css" />
+	<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="DataTable/media/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="DataTable/examples/resources/syntax/shCore.css">
+	<link rel="stylesheet" type="text/css" href="DataTable/examples/resources/demo.css">
+	<!--TODO: no need to use demos.css, as it introduce impact on page link layout on the table-->
+	<!--<link rel="stylesheet" type="text/css" href="DataTable/media/css/demos.css">-->
+	<style type="text/css" class="init">
+td.highlight {
+	background-color: whitesmoke !important;
+}
+td.highlight2 {
+	background-color: #ff0000;
+}
+
+	</style>
+		<script src="jquery-1.11.1.js"></script>
+		<script src="cm.js"></script>
+		<!--jstree plugin-->
+                <script src="JSTree/jstree.min.js"></script>
+		<!--DataTable plugin-->
+		<script type="text/javascript" language="javascript" src="DataTable/media/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" language="javascript" src="DataTable/examples/resources/syntax/shCore.js"></script>
+		<script type="text/javascript" language="javascript" src="DataTable/examples/resources/demo.js"></script>
+		<!--KeyTable.js, jeditable.js are plugins used for table edit-->
+		<script type="text/javascript" language="javascript" src="DataTable/media/js/KeyTable.js"></script>
+		<script type="text/javascript" language="javascript" src="DataTable/media/support/jquery.jeditable.js"></script>
+
+		<title>Content Server</title>
+	</head>
+	<body>
+	<div class="logo"> Material Browser</div>
+        <button>demo button</button>
+	<div class="wrapper">
+		<div id="schema_list" class="left" onclick="onschema_click(event)">
+            	  <ul>
+              	    <li>Root node 1
+                      <ul>
+                        <li id="child_node_1">Child node 1</li>
+                        <li>Child node 2</li>
+                     </ul>
+                    </li>
+                    <!--<li>Root node 2</li>-->
+                  </ul>
+		</div>
+		<div class="right"> 
+				<div class="asset_table"> Asset Table</div>
+				<div class="asset_detail">
+					<div><button type="button" onclick="back_to_list()">Back To List</button> </div>
+					<div id="asset_memo"></div>
+				</div>
+				<div id="json_view">JSON view</div>
+				<button id="save_modification" type="button" onclick="save_modification()">Save Modification</button>
+		</div>
+	</div>
+<!-- TODO: footer would occupy the space of table. May need to fix in style css-->
+<!--	<div class="footer"> Powered By Xirang 2014</div>
+
+	</body>-->
+</html>

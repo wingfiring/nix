@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<META content=false http-equiv=imagetotrbar>
+		<LINK rel=stylesheet type=text/css href="c3.css">
+		<link rel="stylesheet" href="JSTree/themes/default/style.css" />
+		<!--link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico" -->
+		<link rel="stylesheet" type="text/css" href="DataTable/media/css/jquery.dataTables.css">
+		<link rel="stylesheet" type="text/css" href="DataTable/examples/resources/syntax/shCore.css">
+		<!-- link rel="stylesheet" type="text/css" href="DataTable/examples/resources/demo.css" -->
+		<script src="jquery-1.11.1.js"></script>
+		<script src="cm.js"></script>
+		<!--jstree plugin-->
+		<script src="JSTree/jstree.js"></script>
+		<!--DataTable plugin-->
+		<script type="text/javascript" language="javascript" src="DataTable/media/js/jquery.dataTables.js"></script>
+		<!-- script type="text/javascript" language="javascript" src="DataTable/examples/resources/syntax/shCore.js"></script -->
+		<!-- script type="text/javascript" language="javascript" src="DataTable/examples/resources/demo.js"></script -->
+		<!--KeyTable.js, jeditable.js are plugins used for table edit-->
+		<script type="text/javascript" language="javascript" src="DataTable/media/js/KeyTable.js"></script>
+		<script type="text/javascript" language="javascript" src="DataTable/media/support/jquery.jeditable.js"></script>
+
+		<title>Content Server</title>
+	</head>
+	<body>
+		<div class="logo">Asset Browser</div>
+		<div class="search-bar">
+         <form id="material_search" name="material_search" method="get">
+               Search materials:
+               <input id="material_search_keyword" class="material_search_keyword" type="text" placeholder="search materials" name="keyword" size="45" >
+               <button class="material_search_submit" type="button" onclick="material_search_submit()"></button>
+         </form>
+      </div>
+		<div class="wrapper">
+			<div id="schema_list" class="left">
+				<ul>
+				</ul>
+			</div>
+			<div class="right"> 
+				<div id="assetDetailTable_parent"> 
+					<table id="assetDetailTable" >
+						<thead> 
+							<tr> 
+								<th>Member</th> 
+								<th>Value</th> 
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div id="assetTable_parent"> 
+					<table id="assetTable" cellpadding="0" cellspacing="0" border="0">
+						<thead> 
+							<tr> 
+								<th>Thumbnail</th> 
+								<th>UIName</th> 
+								<th>Category</th> 
+								<th>Description</th> 
+								<th>IDentifier</th> 
+							</tr>
+						</thead>
+					</table> 
+				</div>
+
+				<div id="json_view">JSON view</div>
+				<button id="save_modification" type="button">Save Modification</button>
+			</div>
+		</div>
+
+		<!--div class="footer"> Powered By Xirang 2014</div-->
+	</body>
+</html>

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        
+        <title>Protein Visual Materials</title>
+        
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="assets/css/styles.css" />
+        
+<style>
+    
+*[draggable=true] {
+  -moz-user-select:none;
+  -khtml-user-drag: element;
+  cursor: move;
+}
+
+*:-khtml-drag {
+  background-color: rgba(238,238,238, 0.5);
+}
+
+#drop{
+        min-height: 100px;
+        width: 200px;
+        border: 3px dashed #ccc;
+        margin: 10px;
+        padding: 10px;
+   }
+p {
+    margin: 3px 0;
+}
+
+#boxA, #boxB {
+   float:left;padding:10px;margin:10px; -moz-user-select:none;
+}
+#boxA { background-color: #6633FF; width:75px; height:75px;  }
+
+</style>
+    <script src="jsutils.js"></script>
+        
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    
+    <body>
+
+        <header>
+            <h1>Protein Visual Materials</h1>
+        </header>
+        
+        <div class="main">
+        <nav id="filter"></nav>
+        <section id="container">
+        	<ul id="stage">
+            </ul>
+        </section>	
+        
+        <script src="jquery-1.11.1.min.js"></script>
+        <script src="assets/js/script.js"></script>
+        <script src="assets/js/jquery.quicksand.js"></script>
+        </div>
+        <div class="asset_detail">
+            <section id="detail_section">
+		    <div class="breadcrumb">
+                <a class="sub_button" id="back_to_category">Category</a><a class="sub_button" id="back_to_material">Material</a>
+		    </div>
+		    <div id="asset_data"></div>
+            </section>	
+	    </div>
+        <div class="footer"> Powered By Xirang 2014</div>
+    
+    </body>
+</html>

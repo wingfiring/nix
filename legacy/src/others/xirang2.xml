@@ -1,0 +1,48 @@
+<Component name="Protein">
+    <PropertySet name="ThirdPartyTools" 
+	artifactory="https://art-bobcat.autodesk.com/artifactory"
+	credentials="gec:ope**00"
+	nugetSrc="autodesk-3p-generic/BuildTools/Nuget/3.4.4/NuGet.exe"
+	sevenZSrc="autodesk-3p-generic/BuildTools/7z.exe"
+	curlSrc="autodesk-3p-generic/BuildTools/curl/win/curl_7_47_1_openssl_nghttp2_x64.zip"
+	typeRec="headers,lib,sym,compilers,plugins"
+	toolchainRec="intel64,intel32,amd64,arm,arm7a,armeabi" 
+	compilerRec="v140,vc140,vc110,vc100,vc90,clang7,clang50,clang40,clang6,gcc41,gcc44,gcc412,gcc430,gcc447,gcc482,NDK-r9b,NDK-r10d,llvm421"/>
+	<!--
+	/// <description>
+	/// src: where the item of external located on artifactory
+	/// dest: the local target folder due to the mess of the name or version. That is to provide a way to make the target folder flexible.
+	/// ForceExtract: Extract a package at any time. The script is set to skip the extract step if the target folder existed already to improve efficiency. 
+	/// However, for example, a symbol file share the same folder 'bin' with binary, then unzip the symbol packages without the limite above.
+	/// NoLayout: Mainly for tools package, extract the package without no layout reorg by scripts.
+	/// RunUse: flag for customer use, with it skip the header, lib, symbol zip, no dest redirect in run mode.
+	/// </description>
+     -->
+    <ThirdParty name="MSBanned" version="1.0.0" src="team-gec-generic/3P/MSBanned/1.0.0" dest="3P/MSBanned/1.0.0">
+        <Win64-Debug>
+            <BIN>MSBanned-headers</BIN>
+        </Win64-Debug>
+        <Win64-Release>
+            <BIN>MSBanned-headers</BIN>
+        </Win64-Release>
+        <Win86-Debug>
+            <BIN>MSBanned-headers</BIN>
+        </Win86-Debug>
+        <Win86-Release>
+            <BIN>MSBanned-headers</BIN>
+        </Win86-Release>
+        <Linux64-Debug>
+            <BIN>MSBanned-headers</BIN>
+        </Linux64-Debug>
+        <Linux64-Release>
+            <BIN>MSBanned-headers</BIN>
+        </Linux64-Release>
+        <Mac64-Debug>
+            <BIN>MSBanned-headers</BIN>
+        </Mac64-Debug>
+        <Mac64-Release>
+            <BIN>MSBanned-headers</BIN>
+        </Mac64-Release>
+    </ThirdParty>
+	
+</Component>
