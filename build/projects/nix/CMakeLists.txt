@@ -10,6 +10,8 @@ add_definitions(-DNIX_COMMON_DLL_EXPORT)
 
 add_library(nix SHARED ${source_files} ${header_files})
 j_set_target_default(nix)
-target_link_libraries(nix LINK_PRIVATE Boost::filesystem Boost::boost_system pthread zlib)
+
+find_package(Boost COMPONENTS filesystem system)
+target_link_libraries(nix LINK_PRIVATE Boost::filesystem Boost::system pthread zlib)
 
 set_property(TARGET nix PROPERTY FOLDER Library)

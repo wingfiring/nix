@@ -77,8 +77,11 @@ macro (j_main)
                 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4275") # non dll-interface class 'base' used as base for dll-interface class 'derived'
                 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4251") # 'outer::member': class 'inner' needs to have dll-interface to be used by clients of class 'outer'
         endif()
+		string(REPLACE "-std=c++11" "-std=c++17" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
         set(CMAKE_DEBUG_POSTFIX "")
+		set (Boost_MAKE_GLOBAL_TARGETS TRUE)
+		find_package(Boost COMPONENTS filesystem system)
 endmacro()
 
 function(j_pre_sync_external_projects)

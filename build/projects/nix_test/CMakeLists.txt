@@ -2,11 +2,12 @@ j_project(nix_test test/nix)
 
 j_aux_add_source(source_files)
 include_directories(${j_project_root}/include ${Boost_INCLUDE_DIRS})
-add_definitions(-DNIX_COMMON_DLL_IMPORT)
+add_definitions(-DUSE_BOOST_TEST_DYN_LINK)
 
 add_executable(nix_ut ${source_files} ${protein_resource_file})
 j_set_target_default(nix_ut)
-target_link_libraries(nix_ut Boost::boost_unit_test_framework Boost::boost_filesystem Boost::boost_system pthread nix)
+find_package(Boost COMPONENTS unit_test_framework  filesystem system)
+target_link_libraries(nix_ut Boost::unit_test_framework Boost::filesystem Boost::system pthread nix)
 
 set_property(TARGET nix_ut PROPERTY FOLDER Test)
 
