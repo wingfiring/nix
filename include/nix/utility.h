@@ -39,7 +39,7 @@ namespace nix{
 	/// 
 	struct empty_type{};
 
-	template<typename T> void check_delete(T* p){
+	template<typename T> void checked_delete(T* p){
 		static_assert(sizeof(T) > 0, "Must not delete an incomplete type");
 		delete p;
 	}
