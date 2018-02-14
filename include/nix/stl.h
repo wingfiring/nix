@@ -18,6 +18,7 @@
 
 #include <optional>
 #include <tuple>
+#include <variant>
 
 #include <memory>
 #include <exception>
