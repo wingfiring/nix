@@ -1,6 +1,4 @@
-#if 0
-#include <xirang2/string.h>
-namespace xirang2
+#include <nix/string.h>
+namespace nix
 {
 }
-#endif

@@ -102,9 +102,9 @@ namespace nix
 	*/
 	NIX_EXCEPTION_TYPE(contract_exception);
 	
-	NIX_EXCEPTION_TYPE_EX(expect_exception, contract_exception);
+	NIX_EXCEPTION_TYPE_EX(expects_exception, contract_exception);
 
-	NIX_EXCEPTION_TYPE_EX(ensure_exception, contract_exception);
+	NIX_EXCEPTION_TYPE_EX(ensures_exception, contract_exception);
 	
 	/** convert assert check failure to exceptions*/
 	class NIX_API exception_reporter : public contract_handler

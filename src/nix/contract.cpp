@@ -1,4 +1,3 @@
-#if 1
 #include <nix/contract.h>
 #include <nix/context_except.h>
 
@@ -44,10 +43,6 @@ namespace nix
         return g_engine.load();
 	}
 
-#if defined(MSVC_COMPILER_)
-#pragma warning(disable: 4702) // "unreachable code" after aio_assert calling in release build
-#endif
-
 	NIX_API bool contract_handler::process(contract_category cat
 			, const char* expr
 			, const char* sourcefile
@@ -62,14 +57,14 @@ namespace nix
 		return engine->do_process(ensure_valid_contract_category(cat), expr, sourcefile, function, line, message);
 	}
 
+	//local link
 	namespace 
 	{
-		const char* ensure_not_null(const char* src)
+		constexpr const char* ensure_not_null(const char* src) noexcept
 		{
 			return src ? src : "";
 		}
 
-		//local link
 		std::ostream& default_format(std::ostream& os
 				, contract_category type
 				, const char* expr
@@ -102,10 +97,10 @@ namespace nix
 		switch(type)
 		{
 			case contract_category::expect:
-				NIX_THROW(expect_exception) << sstr.str();
+				NIX_THROW(expects_exception) << sstr.str();
 				break;
 			case contract_category::ensure:
-				NIX_THROW(ensure_exception) << sstr.str();
+				NIX_THROW(ensures_exception) << sstr.str();
 				break;
 		}
 
@@ -114,4 +109,3 @@ namespace nix
 
 }
 
-#endif

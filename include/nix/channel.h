@@ -1,6 +1,7 @@
 #ifndef NIX_CHANNEL_H_
 #define NIX_CHANNEL_H_
 #include <nix/config.h>
+#include <nix/contract.h>
 
 #include <condition_variable>
 #include <mutex>
@@ -59,22 +60,22 @@ namespace nix {
 
             m_imp->cv_consumer.wait(lock, [&] {return m_imp->tmp != nullptr; });
 
-            XR_PRE_CONDITION(m_imp->tmp);
+            NIX_EXPECTS(m_imp->tmp);
 			if (m_imp->can_move){
 				if (f) f(std::move(*m_imp->tmp)); 
 
 				T ret(std::move(*m_imp->tmp));	// Note: save ret as temporary objects instead of return std::move(*m_imp->tmp), because can't guarantee when would the return value be constructed, before or after release the lock.
 				m_imp->tmp = nullptr;
-				XR_PRE_CONDITION(!m_imp->tmp);
+				NIX_EXPECTS(!m_imp->tmp);
 				m_imp->cv_sync_producer.notify_one();
 				return ret;
 			}
 			else {
-				if (f) f(*const_cast<const T*>(m_imp->tmp)); 
+				if (f) f(*const_cast<const T*>(m_imp->tmp.load())); 
 
-				T ret(*const_cast<const T*>(m_imp->tmp));	// here ret is nesseary as above.
+				T ret(*const_cast<const T*>(m_imp->tmp.load()));	// here ret is nesseary as above.
 				m_imp->tmp = nullptr;
-				XR_PRE_CONDITION(!m_imp->tmp);
+				NIX_EXPECTS(!m_imp->tmp);
 				m_imp->cv_sync_producer.notify_one();
 				return ret;
 			}
@@ -91,9 +92,9 @@ namespace nix {
             m_imp->can_move = can_move;
 
             m_imp->cv_consumer.notify_one();
-            XR_PRE_CONDITION(m_imp->tmp);
+            NIX_EXPECTS(m_imp->tmp);
             m_imp->cv_sync_producer.wait(lock, [&] {return m_imp->tmp == nullptr; });
-            XR_PRE_CONDITION(!m_imp->tmp);
+            NIX_EXPECTS(!m_imp->tmp);
             m_imp->entered = false;
 
             m_imp->cv_producer.notify_one();

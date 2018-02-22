@@ -1,7 +1,7 @@
 #ifndef NIX_NO_COPY_H_
 #define NIX_NO_COPY_H_
 #include <nix/config.h>
-#include <nix/type_traits.h>
+#include <nix/stl/type_traits.h>
 
 namespace nix {
 	// intents to hold a data member and disable default copy & assignment

@@ -182,11 +182,11 @@ namespace nix
 				}
 
 			constexpr explicit basic_range_string(const std::basic_string<std::remove_const_t<CharT>>& src) noexcept
-				: basic_range_string(src.c_str(), src.size())
+				: basic_range_string(src.data(), src.size())
 				{
 				}
 			constexpr explicit basic_range_string(std::basic_string<std::remove_const_t<CharT>>& src) noexcept
-				: basic_range_string(src.c_str(), src.size())
+				: basic_range_string(src.data(), src.size())
 				{
 				}
 
@@ -235,7 +235,7 @@ namespace nix
 	template<typename CharT, typename CharU>
 		constexpr bool operator < (basic_range_string<CharT> lhs
 				, basic_range_string<CharU> rhs) noexcept {
-			typedef typename basic_range_string<CharT>::char_traits char_traits;
+			typedef typename basic_range_string<CharT>::traits_type char_traits;
 			return char_traits::traits_compare(
 					lhs.data(), lhs.size(), rhs.data(), rhs.size()) < 0;
 		}
@@ -244,7 +244,7 @@ namespace nix
 		constexpr bool operator == (basic_range_string<CharT> lhs
 				, basic_range_string<CharU> rhs)
 		{
-			typedef typename basic_range_string<CharT>::char_traits char_traits;
+			typedef typename basic_range_string<CharT>::traits_type char_traits;
 			return char_traits::traits_compare(
 					lhs.data(), lhs.size(), rhs.data(), rhs.size()) == 0;
 		}
@@ -426,7 +426,7 @@ namespace nix
 		basic_string(basic_string&& rhs)
 		{
 			std::char_traits<char>::copy(tiny_buf, rhs.tiny_buf, sizeof(rhs.tiny_buf));
-			if (is_tiny())
+			if (!is_tiny())
 				rhs.init_clear_();
 		}
 
@@ -449,7 +449,7 @@ namespace nix
 			: basic_string() 
 			{
 				size_type len = std::distance(r.begin(), r.end());
-				pointer p = nullptr;
+				value_type* p = nullptr;
 				if (len < char_data_limit) {
 					p = char_data;
 					set_tiny_size_(len);
@@ -463,13 +463,13 @@ namespace nix
 
 				*p = value_type();
 				if (len >= char_data_limit)
-					detail::hash_str(m_data->data, len);
+					m_data->hash = detail::hash_str(m_data->data, len);
 			}
 		template<typename T, typename U> basic_string(const concator<T,U>& c, heap& h = get_global_heap())
 			: basic_string()
 		{
 			size_type len = c.size();
-			pointer p = nullptr;
+			value_type* p = nullptr;
 			if (len < char_data_limit) {
 				p = char_data;
 				set_tiny_size_(len);
@@ -480,11 +480,11 @@ namespace nix
 				set_tiny_size_(big_string_flag);
 			}
 
-			c.copy_(p, c);
+			c.copy_(p, &c);
 
 			p[len] = value_type();
 			if (len >= char_data_limit)
-				detail::hash_str(m_data->data, len);
+				m_data->hash = detail::hash_str(m_data->data, len);
 		}
 
 		basic_string& operator=(const basic_string& rhs)
@@ -598,7 +598,7 @@ namespace nix
 					return buf + s->size();
 				}
 			template<typename CharT, typename CT, typename CU>
-				static std::size_t copy_(CharT* buf, const concator<CT, CU>* s){
+				static CharT* copy_(CharT* buf, const concator<CT, CU>* s){
 					auto p = s->copy_(buf, s->left);
 					return s->copy_(p, s->right);
 				}
@@ -639,6 +639,18 @@ namespace nix
 			return lhs.c_str() != rhs.c_str()
 				&& static_cast<range_type>(lhs) < static_cast<range_type>(rhs);
 		}
+	template<typename CharT, typename CharU>
+		bool operator < (const basic_string<CharT>& lhs, basic_range_string<CharU> rhs)
+		{
+			typedef basic_range_string<const CharT> range_type;
+			return static_cast<range_type>(lhs) < rhs;
+		}
+	template<typename CharT, typename CharU>
+		bool operator < (basic_range_string<CharT> lhs, const basic_string<CharU>& rhs)
+		{
+			typedef basic_range_string<const CharU> range_type;
+			return lhs < static_cast<range_type>(rhs);
+		}
 
 	template<typename CharT>
 		bool operator == (const basic_string<CharT>& lhs
@@ -648,6 +660,19 @@ namespace nix
 			return lhs.c_str() == rhs.c_str()||
 				( lhs.hash() == rhs.hash()
 				  && static_cast<range_type>(lhs) == static_cast<range_type>(rhs));
+		}
+
+	template<typename CharT, typename CharU>
+		bool operator == (const basic_string<CharT>& lhs, basic_range_string<CharU> rhs)
+		{
+			typedef basic_range_string<const CharT> range_type;
+			return static_cast<range_type>(lhs) == rhs;
+		}
+	template<typename CharT, typename CharU>
+		bool operator == (basic_range_string<CharT> lhs, const basic_string<CharU>& rhs)
+		{
+			typedef basic_range_string<const CharU> range_type;
+			return lhs == static_cast<range_type>(rhs);
 		}
 
 	template<typename CharT>

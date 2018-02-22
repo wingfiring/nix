@@ -19,6 +19,7 @@ namespace nix
 	public:
 		typedef Iterator iterator;
 		typedef std::size_t size_type;
+		typedef std::iterator_traits<Iterator> iterator_traits;
 
 		constexpr range() noexcept : m_beg(), m_end() {}
 

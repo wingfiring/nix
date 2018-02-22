@@ -28,6 +28,6 @@ BOOST_AUTO_TEST_CASE(range_make_case){
 	rng.remove_suffix(1);
 	BOOST_CHECK(rng.empty());
 
-
 }
 BOOST_AUTO_TEST_SUITE_END()
+

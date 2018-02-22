@@ -31,3 +31,4 @@ namespace nix
 		return typeid(*this) == typeid(rhs);
 	}
 }
+
